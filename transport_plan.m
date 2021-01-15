@@ -1,7 +1,7 @@
 
-clear;clc;
+clear;clc;close all;
 
-eps=1e-6;% 小于eps的C直接置零
+eps=1e-2;% 小于eps的C直接置零
 m=10;% 工厂个数
 n=15;% 仓库个数m < n
 
@@ -15,8 +15,10 @@ vol1(1:n-m) = vol1(1:n-m) + vol2(m+1:end);
 %工厂产量与仓库容量
 figure(1);
 hold on
-plot(vol1);
-plot(vol2);
+stem(vol1,'Color','blue');
+stem(vol2,'Color','magenta');
+% histogram(vol1,m,'FaceColor','cyan');
+% histogram(vol2,n,'FaceColor','magenta');
 legend('production','storage');
 title('Volume');
 hold off
@@ -62,3 +64,22 @@ for i_fac=1:m
     end
 end
 hold off
+
+% for i_fac=1:m
+%     x1=pos1(i_fac,1);
+%     y1=pos1(i_fac,2);
+%     house_list=find(C(i_fac,:));
+%     x2=pos2(house_list,1);
+%     y2=pos2(house_list,2);
+% 
+%     hold on
+%     axis([-10 110 -10 110]);
+%     scatter(x1,y1,'+r');
+%     scatter(pos2(:,1),pos2(:,2),'sb');
+%     for i_house=1:length(house_list)
+%         plot([x1 x2(i_house)],[y1 y2(i_house)]);
+%     end
+%     frame(i_fac)=getframe(gcf);
+%     clf;
+% end
+% movie(frame,3,2);
